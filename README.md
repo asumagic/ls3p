@@ -10,7 +10,7 @@ It also provides an optional but convenient TCP transport implementation that ma
 
 ## Usecase
 
-There are [many SDKs](https://microsoft.github.io/language-server-protocol/implementors/sdks/) for the LSP, but few written in C or C++. Yet, C++ could be the language of choice in various usecases, especially when interfacing to C or C++ libraries or even embedding as part of a C++ codebase is a requirement.
+There are [many SDKs](https://microsoft.github.io/language-server-protocol/implementors/sdks/) for the LSP, but few written in C or C++. Yet, C++ could be the language of choice in various usecases where interfacing to existing code is a requirement, and the few existing options may be unsuitable when embedding to an existing project, due to heavy reliance on external libraries like Boost.
 
 The main reason for developing this is as part of an AngelScript Language Server, that is more specifically meant to be embedded as part of [King Arthur's Gold](https://kag2d.com/en/)'s engine, in order to improve development and modding workflow.
 
