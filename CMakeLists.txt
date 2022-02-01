@@ -1,8 +1,17 @@
 cmake_minimum_required(VERSION 3.16)
 
-run_vcpkg()
-
 project(ls3p LANGUAGES CXX)
 
+add_library(ls3p
+    src/jsonrpc.cpp
+)
 
-target_compile_features(ls3p INTERFACE cxx_std_17)
+target_include_directories(ls3p PUBLIC
+    include/
+    lib/nlohmann/include/
+)
+
+target_compile_features(ls3p PUBLIC cxx_std_17)
+
+add_executable(rpctest examples/rpc/main.cpp)
+target_link_libraries(rpctest PRIVATE ls3p)

@@ -1,0 +1,4 @@
+# Standard workflow VS Code ignores
+.cache/*
+.vscode/*
+build/*
