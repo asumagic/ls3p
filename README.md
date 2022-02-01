@@ -4,6 +4,8 @@ This is extremely WIP and is currently unusable for real projects.
 
 A [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) server implementation for C++17, aiming to be lightweight and embeddable.
 
+It aims to provide a basic JSON-RPC implementation built on top of [nlohmann/json](https://github.com/nlohmann/json) and providing a convenient TCP transport implementation that makes implemening clients easily.
+
 ## Usecase
 
 There are a fair number of [existing SDKs](https://microsoft.github.io/language-server-protocol/implementors/sdks/) for the LSP, but few written in C or C++.  
