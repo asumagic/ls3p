@@ -17,4 +17,5 @@ The main reason for developing this is as part of an AngelScript Language Server
 ## Overview
 
 - [`ls3p::messages::`](include/ls3p/messages/) provides C++ class representations of LSP messages that can be parsed from `nlohmann::json` objects, and provides additional helper functions.
-- [`ls3p::jsonrpc::`](include/ls3p/jsonrpc.hpp) provides a basic JSON RPC abstraction, which the LSP is based on.
+    - [`ls3p::messages::base::](include/ls3p/messages/base/) implements ["base" messages](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#requestMessage) as defined in the LSP and/or JSON-RPC specifications.
+    - The rest of the main namespace contains all other definitions.
