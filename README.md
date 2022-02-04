@@ -17,6 +17,6 @@ The main reason for developing this is as part of an AngelScript Language Server
 ## Overview
 
 - [`ls3p::messages::`](include/ls3p/messages/) provides C++ class representations of LSP messages that can be parsed from `nlohmann::json` objects, and provides additional helper functions.
-    - [`ls3p::messages::base::](include/ls3p/messages/base/) implements ["base" messages](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#requestMessage) as defined in the LSP and/or JSON-RPC specifications.
-    - [`ls3p::messages::caps::](include/ls3p/messages/caps/) implements messages defined in the LSP that refer to client or server capabilities.
+    - [`ls3p::messages::base::`](include/ls3p/messages/base/) implements ["base" messages](https://microsoft.github.io/language-server-protocol/specifications/specification-current/#requestMessage) as defined in the LSP and/or JSON-RPC specifications.
+    - [`ls3p::messages::caps::`](include/ls3p/messages/caps/) implements messages defined in the LSP that refer to client or server capabilities.
     - The rest of the main namespace contains all other definitions.
