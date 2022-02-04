@@ -1,7 +1,6 @@
 #pragma once
 #include <ls3p/messages/common.hpp>
-
-#include <ls3p/messages/AnnotatedTextEdit.hpp>
+#include <ls3p/messages/textedit.hpp>
 
 namespace ls3p::messages
 {

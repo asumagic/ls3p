@@ -1,9 +1,7 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/CodeDescription.hpp>
-#include <ls3p/messages/Range.hpp>
-#include <ls3p/messages/Location.hpp>
+#include <ls3p/messages/location.hpp>
 
 namespace ls3p::messages
 {
