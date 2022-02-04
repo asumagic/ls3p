@@ -9,4 +9,5 @@ target_link_libraries(jsontests ls3p Catch2::Catch2)
 
 include(CTest)
 include(Catch)
+
 catch_discover_tests(jsontests)

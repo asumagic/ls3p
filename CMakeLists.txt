@@ -13,4 +13,5 @@ target_include_directories(ls3p PUBLIC
 
 target_compile_features(ls3p PUBLIC cxx_std_17)
 
+enable_testing()
 add_subdirectory(tests)
