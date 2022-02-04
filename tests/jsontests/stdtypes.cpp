@@ -18,7 +18,7 @@ TEST_CASE("Test std::optional<> parsing", "[parsing]") {
 }
 
 TEST_CASE("Test std::variant<> parsing", "[parsing]") {
-    std::variant<int, std::string, std::monostate> value;
+    std::variant<std::monostate, int, std::string> value;
 
     parse(json::parse(R"({ "value": 123 })"), "value", value);
     REQUIRE(std::holds_alternative<int>(value));
