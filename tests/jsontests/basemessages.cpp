@@ -1,9 +1,6 @@
-#include "ls3p/messages/base/ProgressParams.hpp"
-#include "ls3p/messages/base/RequestMessage.hpp"
-#include "ls3p/messages/base/ResponseMessage.hpp"
-#include "ls3p/util/exceptions.hpp"
 #include <catch2/catch.hpp>
 
+#include <ls3p/util/exceptions.hpp>
 #include <ls3p/messages/base.hpp>
 #include <nlohmann/json.hpp>
 
