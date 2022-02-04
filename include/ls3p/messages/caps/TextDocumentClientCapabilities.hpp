@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.hpp"
+#include <ls3p/messages/common.hpp>
 
 namespace ls3p::messages
 {

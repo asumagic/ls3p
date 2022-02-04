@@ -1,7 +1,7 @@
 #pragma once
 
-#include "common.hpp"
-#include "TextDocumentClientCapabilities.hpp"
+#include <ls3p/messages/common.hpp>
+#include <ls3p/messages/caps/TextDocumentClientCapabilities.hpp>
 
 namespace ls3p::messages
 {
