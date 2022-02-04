@@ -6,6 +6,7 @@
 
 namespace ls3p::messages::base
 {
+
 struct ResponseMessage : Message
 {
     std::variant<Integer, std::string, std::monostate> id;
