@@ -63,6 +63,11 @@ using Integer = std::int32_t;
 using UInteger = std::uint32_t;
 using Decimal = double;
 
+// TODO: DocumentUri extra validation and API
+using DocumentUri = std::string;
+// TODO: URI extra validation and API
+using URI = std::string;
+
 using ProgressToken = std::variant<Integer, std::string>;
 
 using util::parse; // NOLINT(misc-unused-using-decls)
