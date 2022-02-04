@@ -7,7 +7,12 @@
 namespace ls3p::messages
 {
 
-using ChangeAnnotationIdentifier = std::string;
+struct ChangeAnnotation
+{
+    std::string label;
+    std::optional<bool> needs_confirmation;
+    std::optional<std::string> description;
+};
 
 struct TextEdit
 {

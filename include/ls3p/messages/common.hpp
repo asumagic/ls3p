@@ -6,6 +6,7 @@
 #include <string>
 #include <variant>
 #include <vector>
+#include <map>
 #include <nlohmann/json.hpp>
 #include <ls3p/util/serializers.hpp>
 #include <ls3p/util/exceptions.hpp>
@@ -69,6 +70,8 @@ using DocumentUri = std::string;
 using URI = std::string;
 
 using ProgressToken = std::variant<Integer, std::string>;
+
+using ChangeAnnotationIdentifier = std::string;
 
 using util::parse; // NOLINT(misc-unused-using-decls)
 
