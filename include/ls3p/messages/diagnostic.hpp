@@ -1,12 +1,23 @@
 #pragma once
 
-#include <ls3p/messages/CodeDescription.hpp>
-#include <ls3p/messages/DiagnosticRelatedInformation.hpp>
-#include <ls3p/messages/Range.hpp>
 #include <ls3p/messages/common.hpp>
+#include <ls3p/messages/CodeDescription.hpp>
+#include <ls3p/messages/Range.hpp>
+#include <ls3p/messages/Location.hpp>
 
 namespace ls3p::messages
 {
+
+struct CodeDescription
+{
+    URI href;
+};
+
+struct DiagnosticRelatedInformation
+{
+    Location location;
+    std::string message;
+};
 
 enum class DiagnosticSeverity : Integer
 {
