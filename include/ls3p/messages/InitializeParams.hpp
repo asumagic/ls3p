@@ -1,7 +1,7 @@
 #pragma once
 
-#include "common.hpp"
-#include "ClientCapabilities.hpp"
+#include <ls3p/messages/common.hpp>
+#include <ls3p/messages/caps/ClientCapabilities.hpp>
 
 namespace ls3p::messages
 {
