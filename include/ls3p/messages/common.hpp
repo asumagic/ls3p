@@ -65,6 +65,6 @@ using Decimal = double;
 
 using ProgressToken = std::variant<Integer, std::string>;
 
-using util::parse;
+using util::parse; // NOLINT(misc-unused-using-decls)
 
 }
