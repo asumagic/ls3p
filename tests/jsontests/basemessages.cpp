@@ -1,5 +1,6 @@
 #include <catch2/catch.hpp>
 
+#include <ls3p/messages/base/CancelParams.hpp>
 #include <ls3p/messages/base/NotificationMessage.hpp>
 #include <nlohmann/json.hpp>
 
@@ -17,5 +18,7 @@ TEST_CASE("Test NotificationMessage parsing", "[parsing]") {
     )").get<base::NotificationMessage>();
     
     REQUIRE(message.method == "$/cancelRequest");
-    REQUIRE(message.params.value().at("id").get<int>() == 123);
+
+    const auto cancel_params = message.params.value().get<base::CancelParams>();
+    REQUIRE(std::get<int>(cancel_params.id) == 123);
 }

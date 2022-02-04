@@ -29,7 +29,7 @@ template<class... Ts>
 struct adl_serializer<std::variant<Ts...>>
 {
     template<class T>
-    static bool try_get(json& j, std::variant<Ts...>& variant)
+    static bool try_get(const json& j, std::variant<Ts...>& variant)
     {
         try
         {

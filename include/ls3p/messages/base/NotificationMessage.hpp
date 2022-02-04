@@ -9,7 +9,6 @@ namespace ls3p::messages::base
 struct NotificationMessage : Message
 {
     std::string method;
-
     std::optional<nlohmann::json> params;
 };
 
