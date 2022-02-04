@@ -19,10 +19,10 @@ inline void from_json(const nlohmann::json& j, RequestMessage& m)
     using nlohmann::json;
 
     from_json(j, static_cast<Message&>(m));
-    j.at("method").get_to(m.method);
-    j.at("params").get_to(m.params);
+    parse(j, "method", m.method);
+    parse(j, "params", m.params);
     util::validate_type<json::value_t::array, json::value_t::object>(m.params);
-    j.at("id").get_to(m.id);
+    parse(j, "id", m.id);
 }
 
 }

@@ -13,4 +13,12 @@ struct NotificationMessage : Message
     std::optional<nlohmann::json> params;
 };
 
+inline void from_json(const nlohmann::json& j, NotificationMessage& m)
+{
+    using nlohmann::json;
+
+    parse(j, "method", m.method);
+    parse(j, "params", m.params);
+}
+
 }

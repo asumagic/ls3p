@@ -9,20 +9,34 @@ namespace ls3p::messages::base
 struct ResponseError
 {
     Integer code;
-
     std::string message;
-
     std::optional<std::variant<Integer, bool, std::string, std::monostate, nlohmann::json>> data;
 };
+
+inline void from_json(const nlohmann::json& j, ResponseError& m)
+{
+    using nlohmann::json;
+
+    parse(j, "code", m.code);
+    parse(j, "message", m.message);
+    parse(j, "data", m.data);
+}
 
 struct ResponseMessage : Message
 {
     std::variant<Integer, std::string, std::monostate> id;
-
     std::optional<std::variant<Integer, bool, std::string, std::monostate, nlohmann::json>> params;
-
     std::optional<ResponseError> error;
 };
+
+inline void from_json(const nlohmann::json& j, ResponseMessage& m)
+{
+    using nlohmann::json;
+
+    parse(j, "id", m.id);
+    parse(j, "params", m.params);
+    parse(j, "error", m.error);
+}
 
 enum class ErrorCode : Integer
 {

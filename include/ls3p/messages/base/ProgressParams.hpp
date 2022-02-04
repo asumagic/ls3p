@@ -12,4 +12,13 @@ struct ProgressParams
     T value;
 };
 
+template<class T>
+inline void from_json(const nlohmann::json& j, ProgressParams<T>& m)
+{
+    using nlohmann::json;
+
+    parse(j, "token", m.token);
+    parse(j, "value", m.value);
+}
+
 }
