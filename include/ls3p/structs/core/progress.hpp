@@ -8,30 +8,59 @@ namespace ls3p::structs::core
 
 struct WorkDoneProgressBegin
 {
-    // NOTE: must assert on kind == "begin"
     std::string title;
     std::optional<bool> cancellable;
     std::optional<std::string> message;
     std::optional<UInteger> percentage;
+
+    LS3P_ARCHIVE(WorkDoneProgressBegin)
+    {
+        archive
+            ("kind", "begin")
+            ("title", title)
+            ("cancellable", cancellable)
+            ("message", message)
+            ("percentage", percentage);
+    }
 };
 
 struct WorkDoneProgressReport
 {
-    // NOTE: must assert on kind == "report"
     std::optional<bool> cancellable;
     std::optional<std::string> message;
     std::optional<UInteger> percentage;
+
+    LS3P_ARCHIVE(WorkDoneProgressReport)
+    {
+        archive
+            ("kind", "report")
+            ("cancellable", cancellable)
+            ("message", message)
+            ("percentage", percentage);
+    }
 };
 
 struct WorkDoneProgressEnd
 {
-    // NOTE: must assert on kind == "end"
     std::optional<std::string> message;
+
+    LS3P_ARCHIVE(WorkDoneProgressEnd)
+    {
+        archive
+            ("kind", "end")
+            ("message", message);
+    }
 };
 
 struct WorkDoneProgressOptions
 {
     std::optional<bool> work_done_progress;
+
+    LS3P_ARCHIVE(WorkDoneProgressOptions)
+    {
+        archive
+            ("workDoneProgress", work_done_progress);
+    }
 };
 
 // TODO: window.workDoneProgress: how should this be implemented?
@@ -39,6 +68,12 @@ struct WorkDoneProgressOptions
 struct PartialResultParams
 {
     std::optional<ProgressToken> partial_result_token;
+
+    LS3P_ARCHIVE(PartialResultParams)
+    {
+        archive
+            ("partialResultToken", partial_result_token);
+    }
 };
 
 }
