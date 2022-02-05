@@ -6,10 +6,7 @@
 #include <ls3p/structs/core/regex.hpp>
 #include <ls3p/structs/core/trace.hpp>
 #include <ls3p/structs/core/workspaceedit.hpp>
-#include <ls3p/structs/workspace/configuration.hpp>
-#include <ls3p/structs/workspace/folders.hpp>
-#include <ls3p/structs/workspace/fswatch.hpp>
-#include <ls3p/structs/workspace/symbols.hpp>
+#include <ls3p/structs/workspace.hpp>
 #include <ls3p/structs/lang.hpp>
 
 namespace ls3p::structs::general
