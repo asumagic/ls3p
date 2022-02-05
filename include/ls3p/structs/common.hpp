@@ -69,6 +69,17 @@ struct FromArchiver
     }
 
     template<class T>
+    const FromArchiver& static_field(const char* name, const T& expected) const
+    {
+        if (j.get<T>() != expected)
+        {
+            throw util::ValidationError("Const field failed to match");
+        }
+
+        return *this;
+    }
+
+    template<class T>
     const FromArchiver& operator()(const char* name, T& target) const
     {
         parse(j, name, target);
@@ -86,6 +97,13 @@ struct ToArchiver
     const ToArchiver& with_base(const T& source) const
     {
         j = source;
+        return *this;
+    }
+
+    template<class T>
+    const ToArchiver& static_field(const char* name, const T& source) const
+    {
+        j[name] = source;
         return *this;
     }
 
