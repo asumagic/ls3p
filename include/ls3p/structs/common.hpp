@@ -71,7 +71,7 @@ struct FromArchiver
     template<class T>
     const FromArchiver& static_field(const char* name, const T& expected) const
     {
-        if (j.get<T>() != expected)
+        if (j.at(name).get<T>() != expected)
         {
             throw util::ValidationError("Const field failed to match");
         }
