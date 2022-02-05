@@ -11,7 +11,7 @@ struct Message
     {
         if (str != "2.0")
         {
-            throw util::ParsingException("Expected JSON-RPC 2.0 message");
+            throw util::ValidationError("Expected JSON-RPC 2.0 message");
         }
     }
 };

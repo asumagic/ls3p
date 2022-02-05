@@ -79,7 +79,7 @@ TEST_CASE("Test ResponseMessage (params+error fields) exception", "[request]")
                 }
             }
         )").get<base::ResponseMessage>(),
-        ls3p::util::ParsingException
+        ls3p::util::ValidationError
     );
 }
 

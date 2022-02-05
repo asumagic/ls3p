@@ -53,8 +53,7 @@ struct ResponseMessage : Message
         
         if (params && error)
         {
-            // FIXME: should be a ValidationError or something
-            throw util::ParsingException("Only params or error may be present at a time");
+            throw util::ValidationError("Only params or error may be present at a time");
         }
     }
 };

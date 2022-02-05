@@ -19,7 +19,7 @@ void validate_type(const nlohmann::json& json)
 {
     if (!((json.type() == AcceptableTypes) || ...))
     {
-        throw util::ParsingException("Could not match value against possible types");
+        throw util::ValidationError("Could not match value against possible types");
     }
 }
 

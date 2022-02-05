@@ -20,7 +20,7 @@ struct adl_serializer<std::monostate>
     {
         if (!j.is_null())
         {
-            throw ls3p::util::ParsingException("Not a null value");
+            throw ls3p::util::ValidationError("Not a null value");
         }
     }
 };
@@ -40,7 +40,7 @@ struct adl_serializer<std::variant<Ts...>>
         {
             return false;
         }
-        catch (const ls3p::util::ParsingException& e)
+        catch (const ls3p::util::ValidationError& e)
         {
             return false;
         }
@@ -55,7 +55,7 @@ struct adl_serializer<std::variant<Ts...>>
     {
         if (!(try_get<Ts>(j, v) || ...))
         {
-            throw ls3p::util::ParsingException("Failed to match any type for variant");
+            throw ls3p::util::ValidationError("Failed to match any type for variant");
         }
     }
 };
