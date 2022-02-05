@@ -83,16 +83,16 @@ struct ToArchiver
     nlohmann::json& j;
 
     template<class T>
-    const ToArchiver& with_base(T& target) const
+    const ToArchiver& with_base(const T& source) const
     {
-        j = target;
+        j = source;
         return *this;
     }
 
     template<class T>
-    const ToArchiver& operator()(const char* name, T& target) const
+    const ToArchiver& operator()(const char* name, const T& source) const
     {
-        j[name] = target;
+        j[name] = source;
         return *this;
     }
 };
