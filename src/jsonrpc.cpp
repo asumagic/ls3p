@@ -1,6 +1,6 @@
 #include <ls3p/jsonrpc.hpp>
 
-#include <iostream>
+#include <ls3p/structs/base/message.hpp>
 
 namespace ls3p
 {
@@ -15,30 +15,16 @@ void HttpJsonRpcServer::run_blocking()
 
 void HttpJsonRpcServer::handle_request()
 {
-    const auto header = parse_http_header(read_http_header());
+    const auto header_buffer = read_http_header();
+    const auto header_params = parse_http_header(header_buffer);
+    
+    const auto content_length = std::stoi(std::string(header_params.at("Content-Length")));
 
-    for (const auto& [key, value] : header)
-    {
-        std::cout << key << ", " << value << '\n';
-    }
-}
+    std::vector<char> content_buffer(content_length);
+    m_transport->read(content_buffer.data(), content_length);
 
-std::string HttpJsonRpcServer::read_http_header()
-{
-    std::string buffer;
-
-    for (;;)
-    {
-        std::array<char, 1> ugly_char_buffer;
-        m_transport->read(ugly_char_buffer.data(), 1);
-        buffer += ugly_char_buffer[0];
-
-        if (buffer.size() >= 4
-            && std::string_view(buffer).substr(buffer.size() - 4) == "\r\n\r\n")
-        {
-            return buffer;
-        }
-    }
+    const auto content_json = nlohmann::json::parse(content_buffer.begin(), content_buffer.end());
+    parse_json_content(content_json);
 }
 
 std::map<std::string_view, std::string_view> HttpJsonRpcServer::parse_http_header(std::string_view header)
@@ -70,6 +56,24 @@ std::map<std::string_view, std::string_view> HttpJsonRpcServer::parse_http_heade
     }
 
     return result;
+}
+
+std::string HttpJsonRpcServer::read_http_header()
+{
+    std::string buffer;
+
+    for (;;)
+    {
+        std::array<char, 1> ugly_char_buffer;
+        m_transport->read(ugly_char_buffer.data(), 1);
+        buffer += ugly_char_buffer[0];
+
+        if (buffer.size() >= 4
+            && std::string_view(buffer).substr(buffer.size() - 4) == "\r\n\r\n")
+        {
+            return buffer;
+        }
+    }
 }
 
 }
