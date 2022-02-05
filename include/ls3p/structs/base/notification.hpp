@@ -14,8 +14,6 @@ struct NotificationMessage : Message
 
 inline void from_json(const nlohmann::json& j, NotificationMessage& m)
 {
-    using nlohmann::json;
-
     parse(j, "method", m.method);
     parse(j, "params", m.params);
 }

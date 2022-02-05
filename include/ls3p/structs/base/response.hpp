@@ -32,8 +32,6 @@ struct ResponseError
 
 inline void from_json(const nlohmann::json& j, ResponseError& m)
 {
-    using nlohmann::json;
-
     parse(j, "code", m.code);
     parse(j, "message", m.message);
     parse(j, "data", m.data);
@@ -48,8 +46,6 @@ struct ResponseMessage : Message
 
 inline void from_json(const nlohmann::json& j, ResponseMessage& m)
 {
-    using nlohmann::json;
-
     parse(j, "id", m.id);
     parse(j, "params", m.params);
     parse(j, "error", m.error);

@@ -12,8 +12,6 @@ struct CancelParams
 
 inline void from_json(const nlohmann::json& j, CancelParams& m)
 {
-    using nlohmann::json;
-
     parse(j, "id", m.id);
 }
 
