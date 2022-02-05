@@ -140,9 +140,9 @@ using util::parse; // NOLINT(misc-unused-using-decls)
     { \
         s.archive(ls3p::util::FromArchiver{j}); \
     } \
-    friend inline void to_json(nlohmann::json& j, class_name& s) \
+    friend inline void to_json(nlohmann::json& j, const class_name& s) \
     { \
-        s.archive(ls3p::util::ToArchiver{j}); \
+        const_cast<class_name&>(s).archive(ls3p::util::ToArchiver{j}); \
     } \
     template<class Archive> \
     inline void archive(const Archive& archive)
