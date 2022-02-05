@@ -1,8 +1,8 @@
 #pragma once
 
-#include <ls3p/messages/common.hpp>
+#include <ls3p/structs/common.hpp>
 
-namespace ls3p::messages::core
+namespace ls3p::structs::core
 {
 
 struct Command

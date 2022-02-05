@@ -1,11 +1,11 @@
 #include <catch2/catch.hpp>
 
 #include <ls3p/util/exceptions.hpp>
-#include <ls3p/messages/base.hpp>
+#include <ls3p/structs/base.hpp>
 #include <nlohmann/json.hpp>
 
 using nlohmann::json;
-using namespace ls3p::messages;
+using namespace ls3p::structs;
 
 TEST_CASE("Test NotificationMessage parsing", "[parsing]") {
     const auto message = json::parse(R"(

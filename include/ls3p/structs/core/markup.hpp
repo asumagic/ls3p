@@ -1,9 +1,9 @@
 #pragma once
 
-#include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/location.hpp>
+#include <ls3p/structs/common.hpp>
+#include <ls3p/structs/core/location.hpp>
 
-namespace ls3p::messages::core
+namespace ls3p::structs::core
 {
 
 namespace markup_kind

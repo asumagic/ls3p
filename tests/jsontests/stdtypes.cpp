@@ -1,11 +1,11 @@
 #include <catch2/catch.hpp>
 
-#include <ls3p/messages/common.hpp>
+#include <ls3p/structs/common.hpp>
 #include <nlohmann/json.hpp>
 #include <variant>
 
 using nlohmann::json;
-using namespace ls3p::messages;
+using namespace ls3p::structs;
 
 TEST_CASE("Test std::optional<> parsing", "[parsing]") {
     std::optional<int> value;

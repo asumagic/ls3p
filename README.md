@@ -19,4 +19,4 @@ The main reason for developing this is as part of an AngelScript Language Server
 
 ## Overview
 
-- [`ls3p::messages::`](include/ls3p/messages/) provides C++ class representations of LSP messages that can be parsed from `nlohmann::json` objects, and provides additional helper functions. It is split up in namespaces that generally match the LSP specification categories. Each file groups up related structures. Convenience headers inside of the root directory allow including all headers of a particular `ls3p::messages::` namespace.
+- [`ls3p::structs::`](include/ls3p/structs/) provides C++ class representations of LSP messages that can be parsed from `nlohmann::json` objects, and provides additional helper functions. It is split up in namespaces that generally match the LSP specification categories. Each file groups up related structures. Convenience headers inside of the root directory allow including all headers of a particular `ls3p::structs::` namespace.

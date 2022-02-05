@@ -1,8 +1,8 @@
 #pragma once
-#include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/textedit.hpp>
+#include <ls3p/structs/common.hpp>
+#include <ls3p/structs/core/textedit.hpp>
 
-namespace ls3p::messages::core
+namespace ls3p::structs::core
 {
 
 struct CreateFileOptions

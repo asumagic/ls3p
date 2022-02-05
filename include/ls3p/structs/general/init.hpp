@@ -1,12 +1,12 @@
 #pragma once
 
-#include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/markup.hpp>
-#include <ls3p/messages/core/regex.hpp>
-#include <ls3p/messages/core/workspaceedit.hpp>
-#include <ls3p/messages/workspace/folders.hpp>
+#include <ls3p/structs/common.hpp>
+#include <ls3p/structs/core/markup.hpp>
+#include <ls3p/structs/core/regex.hpp>
+#include <ls3p/structs/core/workspaceedit.hpp>
+#include <ls3p/structs/workspace/folders.hpp>
 
-namespace ls3p::messages::general
+namespace ls3p::structs::general
 {
 
 struct TextDocumentClientCapabilities
@@ -190,5 +190,7 @@ struct InitializeError
 {
     bool retry;
 };
+
+struct InitializedParams {};
 
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <ls3p/messages/common.hpp>
+#include <ls3p/structs/common.hpp>
 
-namespace ls3p::messages::base
+namespace ls3p::structs::base
 {
 
 struct CancelParams

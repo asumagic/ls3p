@@ -57,7 +57,7 @@ void parse(const nlohmann::json& j, const char* field, T& target)
 
 }
 
-namespace ls3p::messages
+namespace ls3p::structs
 {
 
 using Integer = std::int32_t;
