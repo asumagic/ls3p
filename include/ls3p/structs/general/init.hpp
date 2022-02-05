@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ls3p/structs/lang/monikers.hpp"
 #include <ls3p/structs/common.hpp>
 #include <ls3p/structs/core/markup.hpp>
 #include <ls3p/structs/core/regex.hpp>
@@ -9,6 +10,7 @@
 #include <ls3p/structs/workspace/folders.hpp>
 #include <ls3p/structs/workspace/fswatch.hpp>
 #include <ls3p/structs/workspace/symbols.hpp>
+#include <ls3p/structs/lang.hpp>
 
 namespace ls3p::structs::general
 {
@@ -40,11 +42,12 @@ struct TextDocumentClientCapabilities
     // TODO: linkedEditingRange
     // TODO: callHierarchy
     // TODO: semanticTokens
-    // TODO: moniker
+    std::optional<lang::MonikerClientCapabilities> moniker;
 
     LS3P_ARCHIVE(TextDocumentClientCapabilities)
     {
-
+        archive
+            ("moniker", moniker);
     }
 };
 
