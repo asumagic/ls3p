@@ -1,11 +1,11 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/location.hpp>
+#include <ls3p/messages/core/location.hpp>
 #include <optional>
 #include <string>
 
-namespace ls3p::messages
+namespace ls3p::messages::core
 {
 
 struct TextDocumentIdentifier

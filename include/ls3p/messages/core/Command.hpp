@@ -2,7 +2,7 @@
 
 #include <ls3p/messages/common.hpp>
 
-namespace ls3p::messages
+namespace ls3p::messages::core
 {
 
 struct Command

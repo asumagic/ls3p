@@ -1,10 +1,10 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/location.hpp>
-#include <ls3p/messages/textdoc.hpp>
+#include <ls3p/messages/core/location.hpp>
+#include <ls3p/messages/core/textdoc.hpp>
 
-namespace ls3p::messages
+namespace ls3p::messages::core
 {
 
 struct ChangeAnnotation

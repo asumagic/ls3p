@@ -1,9 +1,9 @@
 #pragma once
 
-#include <ls3p/messages/Range.hpp>
 #include <ls3p/messages/common.hpp>
+#include <ls3p/messages/core/location.hpp>
 
-namespace ls3p::messages
+namespace ls3p::messages::core
 {
 
 struct LocationLink
