@@ -47,4 +47,24 @@ struct DidChangeWatchedFilesRegistrationOptions
     }
 };
 
+enum class FileChangeType
+{
+    CREATED = 1,
+    CHANGED = 2,
+    DELETED = 3
+};
+
+struct FileEvent
+{
+    DocumentUri uri;
+    FileChangeType type;
+
+    LS3P_ARCHIVE(FileEvent)
+    {
+        archive
+            ("uri", uri)
+            ("type", type);
+    }
+};
+
 }
