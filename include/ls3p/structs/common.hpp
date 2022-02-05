@@ -119,6 +119,10 @@ using util::parse; // NOLINT(misc-unused-using-decls)
 
 }
 
+// TODO: In LS3P_ARCHIVE, we could improve the exception handling to allow attaching extra context
+//       to errors, in particular "during serialization", "during deserialization", the object type,
+//       the field name, etc.
+
 /// \brief Helper macro to define an "archive" function to automatically expose from_json and to_json functions.
 /// \details
 /// Define this within a struct you want from_json and to_json to be automatically created from.
