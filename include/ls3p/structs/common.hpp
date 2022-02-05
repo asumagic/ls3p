@@ -23,38 +23,6 @@ void validate_type(const nlohmann::json& json)
     }
 }
 
-template<class T>
-struct _Parse
-{
-    static void parse(const nlohmann::json& j, const char* field, T& target)
-    {
-        j.at(field).get_to(target);
-    }
-};
-
-template<class T>
-struct _Parse<std::optional<T>>
-{
-    static void parse(const nlohmann::json& j, const char* field, std::optional<T>& target)
-    {
-        if (j.contains(field))
-        {
-            j[field].get_to(target);
-        }
-        else
-        {
-            target.reset();
-        }
-    }
-};
-
-// partial function template specialization is not possible, so do this stupid shit instead
-template<class T>
-void parse(const nlohmann::json& j, const char* field, T& target)
-{
-    _Parse<T>::parse(j, field, target);
-}
-
 struct FromArchiver
 {
     static constexpr bool is_parser = true;
@@ -82,7 +50,22 @@ struct FromArchiver
     template<class T>
     const FromArchiver& operator()(const char* name, T& target) const
     {
-        parse(j, name, target);
+        j.at(name).get_to(target);
+        return *this;
+    }
+
+    template<class T>
+    const FromArchiver& operator()(const char* name, std::optional<T>& target) const
+    {
+        if (j.contains(name))
+        {
+            j[name].get_to(target.emplace());
+        }
+        else
+        {
+            target.reset();
+        }
+
         return *this;
     }
 };
@@ -113,6 +96,17 @@ struct ToArchiver
         j[name] = source;
         return *this;
     }
+
+    template<class T>
+    const ToArchiver& operator()(const char* name, const std::optional<T>& source) const
+    {
+        if (source.has_value())
+        {
+            j[name] = source.value();
+        }
+
+        return *this;
+    }
 };
 
 }
@@ -132,8 +126,6 @@ using URI = std::string;
 using ProgressToken = std::variant<Integer, std::string>;
 
 using ChangeAnnotationIdentifier = std::string;
-
-using util::parse; // NOLINT(misc-unused-using-decls)
 
 }
 

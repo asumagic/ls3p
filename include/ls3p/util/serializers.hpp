@@ -60,32 +60,4 @@ struct adl_serializer<std::variant<Ts...>>
     }
 };
 
-template<class T>
-struct adl_serializer<std::optional<T>>
-{
-    static void to_json(json& j, const std::optional<T>& v)
-    {
-        if (v.has_value())
-        {
-            j = v.value();
-        }
-        else
-        {
-            j = {};
-        }
-    }
-
-    static void from_json(const json& j, std::optional<T>& v)
-    {
-        if (!j.is_null())
-        {
-            v = j.get<T>();
-        }
-        else
-        {
-            v = std::nullopt;
-        }
-    }
-};
-
 }
