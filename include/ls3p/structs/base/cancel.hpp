@@ -8,11 +8,11 @@ namespace ls3p::structs::base
 struct CancelParams
 {
     std::variant<Integer, std::string> id;
-};
 
-inline void from_json(const nlohmann::json& j, CancelParams& m)
-{
-    parse(j, "id", m.id);
-}
+    LS3P_ARCHIVE(CancelParams)
+    {
+        archive("id", id);
+    }
+};
 
 }
