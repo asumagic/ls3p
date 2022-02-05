@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/caps/ClientCapabilities.hpp>
+#include <ls3p/messages/core/workspaceedit.hpp>
 #include <variant>
 
 namespace ls3p::messages::general
@@ -43,16 +43,34 @@ struct ClientCapabilities
     {
         std::optional<bool> apply_edit;
 
-        // TODO: workspaceEdit
+        std::optional<core::WorkspaceEdit::ClientCapabilities> workspace_edit;
+
         // TODO: didChangeConfiguration
         // TODO: didChangeWatchedFiles
         // TODO: symbol
         // TODO: executeCommand
-        // TODO: workspaceFolders
-        // TODO: configuration
+        
+        std::optional<bool> workspace_folders;
+        std::optional<bool> configuration;
+
         // TODO: semanticTokens
         // TODO: codeLens
-        // TODO: fileOperations
+
+        struct FileOperations
+        {
+            std::optional<bool> dynamic_registration;
+
+            std::optional<bool> did_create;
+            std::optional<bool> will_create;
+
+            std::optional<bool> did_rename;
+            std::optional<bool> will_rename;
+
+            std::optional<bool> did_delete;
+            std::optional<bool> will_delete;
+        };
+
+        std::optional<FileOperations> file_operations;
     };
 
     std::optional<Workspace> workspace;
@@ -63,7 +81,8 @@ struct ClientCapabilities
     {
         std::optional<bool> work_done_progress;
 
-        
+        // TODO: showMessage
+        // TODO: showDocument
     };
 };
 
