@@ -1,7 +1,8 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/location.hpp>
+#include <ls3p/messages/core/Range.hpp>
+#include <ls3p/messages/core/Location.hpp>
 
 namespace ls3p::messages::core
 {
@@ -31,7 +32,7 @@ struct Diagnostic
         UNNECESSARY = 1,
         DEPRECATED = 2
     };
-    
+
     Range range;
     std::optional<Severity> severity;
     std::optional<std::variant<Integer, std::string>> code;

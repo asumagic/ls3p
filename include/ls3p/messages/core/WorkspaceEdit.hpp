@@ -1,6 +1,6 @@
 #pragma once
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/textedit.hpp>
+#include <ls3p/messages/core/TextEdit.hpp>
 
 namespace ls3p::messages::core
 {
@@ -80,17 +80,17 @@ struct ChangeAnnotationSupport
     std::optional<bool> groups_on_labels;
 };
 
-struct WorkspaceEditClientCapabilities
-{
-    std::optional<bool> document_changes;
-    std::optional<std::vector<ResourceOperationKind>> resource_operations;
-    std::optional<std::vector<FailureHandlingKind>> failure_handling;
-    std::optional<bool> normalizes_line_endings;
-    std::optional<ChangeAnnotationSupport> change_annotation_support;
-};
-
 struct WorkspaceEdit
 {
+    struct ClientCapabilities
+    {
+        std::optional<bool> document_changes;
+        std::optional<std::vector<ResourceOperationKind>> resource_operations;
+        std::optional<std::vector<FailureHandlingKind>> failure_handling;
+        std::optional<bool> normalizes_line_endings;
+        std::optional<ChangeAnnotationSupport> change_annotation_support;
+    };
+
     std::optional<std::map<DocumentUri, std::vector<TextEdit>>> changes;
 
     std::vector<std::variant<TextDocumentEdit, CreateFile, RenameFile, DeleteFile>> document_changes;
