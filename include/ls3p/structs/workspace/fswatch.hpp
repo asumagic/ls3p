@@ -16,6 +16,13 @@ struct DidChangeWatchedFilesClientCapabilities
     }
 };
 
+enum class WatchKind : UInteger
+{
+    CREATE = (1 << 0),
+    CHANGE = (1 << 1),
+    DELETE = (1 << 2)
+};
+
 struct FileSystemWatcher
 {
     std::string glob_pattern;
