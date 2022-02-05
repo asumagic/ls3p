@@ -2,7 +2,7 @@
 
 #include <ls3p/messages/common.hpp>
 #include <ls3p/messages/core/workspaceedit.hpp>
-#include <variant>
+#include <ls3p/messages/workspace/folders.hpp>
 
 namespace ls3p::messages::general
 {
@@ -110,7 +110,7 @@ struct InitializeParams
 
     // TODO: trace
 
-    std::vector<WorkspaceFolder> workspace_folders;
+    std::vector<workspace::WorkspaceFolder> workspace_folders;
 };
 
 }
