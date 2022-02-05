@@ -1,6 +1,8 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
+#include <ls3p/messages/core/markup.hpp>
+#include <ls3p/messages/core/regex.hpp>
 #include <ls3p/messages/core/workspaceedit.hpp>
 #include <ls3p/messages/workspace/folders.hpp>
 
@@ -84,6 +86,59 @@ struct ClientCapabilities
         // TODO: showMessage
         // TODO: showDocument
     };
+
+    std::optional<Window> window;
+
+    struct General
+    {
+        std::optional<core::RegularExpressionsClientCapabilities> regular_expressions;
+        std::optional<core::MarkdownClientCapabilities> markdown;
+    };
+
+    std::optional<General> general;
+
+    std::optional<nlohmann::json> experimental;
+};
+
+struct ServerCapabilities
+{
+    // TODO: textDocumentSync
+    // TODO: completionProvider
+    // TODO: hoverProvider
+    // TODO: signatureHelpProvider
+    // TODO: declarationProvider
+    // TODO: definitionProvider
+    // TODO: typeDefinitionProvider
+    // TODO: implementationProvider
+    // TODO: referencesProvider
+    // TODO: documentHighlightProvider
+    // TODO: documentSymbolProvider
+    // TODO: codeActionProvider
+    // TODO: codeLensProvider
+    // TODO: documentLinkProvider
+    // TODO: colorProvider
+    // TODO: documentFormattingProvider
+    // TODO: documentRangeFormattingProvider
+    // TODO: documentOnTypeFormattingProvider
+    // TODO: renameProvider
+    // TODO: foldingRangeProvider
+    // TODO: executeCommandProvider
+    // TODO: selectionRangeProvider
+    // TODO: linkedEditingRangeProvider
+    // TODO: callHierarchyProvider
+    // TODO: semanticTokensProvider
+    // TODO: monikerProvider
+    // TODO: workspaceSymbolProvider
+
+    struct Workspace
+    {
+        // TODO: workspaceFolders
+        std::optional<ClientCapabilities::Workspace::FileOperations> file_operations;
+    };
+
+    std::optional<Workspace> workspace;
+
+    std::optional<nlohmann::json> experimental;
 };
 
 struct InitializeParams
@@ -111,6 +166,29 @@ struct InitializeParams
     // TODO: trace
 
     std::vector<workspace::WorkspaceFolder> workspace_folders;
+};
+
+struct InitializeResult
+{
+    ServerCapabilities capabilities;
+
+    struct ServerInfo
+    {
+        std::string name;
+        std::optional<std::string> version;
+    };
+
+    ServerInfo server_info;
+};
+
+enum class InitializeErrorCode : Integer
+{
+    UNKNOWN_PROTOCOL_VERSION = 1
+};
+
+struct InitializeError
+{
+    bool retry;
 };
 
 }
