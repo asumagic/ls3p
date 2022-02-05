@@ -16,4 +16,28 @@ struct DidChangeWatchedFilesClientCapabilities
     }
 };
 
+struct FileSystemWatcher
+{
+    std::string glob_pattern;
+    std::optional<UInteger> kind;
+
+    LS3P_ARCHIVE(FileSystemWatcher)
+    {
+        archive
+            ("globalPattern", glob_pattern)
+            ("kind", kind);
+    }
+};
+
+struct DidChangeWatchedFilesRegistrationOptions
+{
+    std::vector<FileSystemWatcher> watchers;
+
+    LS3P_ARCHIVE(DidChangeWatchedFilesRegistrationOptions)
+    {
+        archive
+            ("watchers", watchers);
+    }
+};
+
 }
