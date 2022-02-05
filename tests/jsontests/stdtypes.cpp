@@ -7,7 +7,8 @@
 using nlohmann::json;
 using namespace ls3p::structs;
 
-TEST_CASE("Test std::optional<> parsing", "[parsing]") {
+TEST_CASE("Test std::optional<> parsing", "[parsing]")
+{
     std::optional<int> value;
     parse(json::parse(R"({ "value": 123 })"), "value", value);
     REQUIRE(value.has_value());
@@ -17,7 +18,8 @@ TEST_CASE("Test std::optional<> parsing", "[parsing]") {
     REQUIRE(!value.has_value());
 }
 
-TEST_CASE("Test std::variant<> parsing", "[parsing]") {
+TEST_CASE("Test std::variant<> parsing", "[parsing]")
+{
     std::variant<std::monostate, int, std::string> value;
 
     parse(json::parse(R"({ "value": 123 })"), "value", value);

@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(ls3p LANGUAGES CXX)
 
 add_library(ls3p
+    src/server.cpp
     src/jsonrpc.cpp
 )
 

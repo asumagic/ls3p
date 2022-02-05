@@ -7,7 +7,8 @@
 using nlohmann::json;
 using namespace ls3p::structs;
 
-TEST_CASE("Test NotificationMessage parsing", "[parsing]") {
+TEST_CASE("Test NotificationMessage parsing", "[parsing]")
+{
     const auto message = json::parse(R"(
         {
             "method": "$/cancelRequest",
@@ -23,7 +24,8 @@ TEST_CASE("Test NotificationMessage parsing", "[parsing]") {
     REQUIRE(std::get<int>(cancel_params.id) == 123);
 }
 
-TEST_CASE("Test ProgressParams parsing", "[parsing]") {
+TEST_CASE("Test ProgressParams parsing", "[parsing]")
+{
     const auto message = json::parse(R"(
         {
             "token": 123,
@@ -35,7 +37,8 @@ TEST_CASE("Test ProgressParams parsing", "[parsing]") {
     REQUIRE(message.value == 456);
 }
 
-TEST_CASE("Test RequestMessage parsing", "[request]") {
+TEST_CASE("Test RequestMessage parsing", "[request]")
+{
     const auto message = json::parse(R"(
         {
             "version": "2.0",
@@ -49,7 +52,8 @@ TEST_CASE("Test RequestMessage parsing", "[request]") {
     REQUIRE(!message.params.has_value());
 }
 
-TEST_CASE("Test ResponseMessage (payload case) parsing", "[request]") {
+TEST_CASE("Test ResponseMessage (payload case) parsing", "[request]")
+{
     const auto message = json::parse(R"(
         {
             "id": 123,
@@ -62,7 +66,8 @@ TEST_CASE("Test ResponseMessage (payload case) parsing", "[request]") {
     REQUIRE(!message.error.has_value());
 }
 
-TEST_CASE("Test ResponseMessage (params+error fields) exception", "[request]") {
+TEST_CASE("Test ResponseMessage (params+error fields) exception", "[request]")
+{
     REQUIRE_THROWS_AS(
         json::parse(R"(
             {
@@ -78,7 +83,8 @@ TEST_CASE("Test ResponseMessage (params+error fields) exception", "[request]") {
     );
 }
 
-TEST_CASE("Test ResponseMessage (+ResponseError) parsing", "[request]") {
+TEST_CASE("Test ResponseMessage (+ResponseError) parsing", "[request]")
+{
     const auto message = json::parse(R"(
         {
             "id": 123,
