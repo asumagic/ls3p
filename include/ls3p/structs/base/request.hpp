@@ -12,20 +12,25 @@ struct RequestMessage : Message
     std::string method;
     std::optional<nlohmann::json> params;
     std::variant<Integer, std::string> id;
-};
 
-inline void from_json(const nlohmann::json& j, RequestMessage& m)
-{
-    using nlohmann::json;
-
-    from_json(j, static_cast<Message&>(m));
-    parse(j, "method", m.method);
-    parse(j, "params", m.params);
-    if (m.params.has_value())
+    LS3P_ARCHIVE(RequestMessage)
     {
-        util::validate_type<json::value_t::array, json::value_t::object>(m.params.value());
+        using nlohmann::json;
+
+        archive
+            .template with_base<Message>(*this)
+            ("method", method)
+            ("params", params)
+            ("id", id);
+        
+        if constexpr (Archive::is_parser)
+        {
+            if (params.has_value())
+            {
+                util::validate_type<json::value_t::array, json::value_t::object>(params.value());
+            }
+        }
     }
-    parse(j, "id", m.id);
-}
+};
 
 }

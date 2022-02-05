@@ -10,13 +10,13 @@ struct ProgressParams
 {
     ProgressToken token;
     T value;
-};
 
-template<class T>
-inline void from_json(const nlohmann::json& j, ProgressParams<T>& m)
-{
-    parse(j, "token", m.token);
-    parse(j, "value", m.value);
-}
+    LS3P_ARCHIVE(ProgressParams<T>)
+    {
+        archive
+            ("token", token)
+            ("value", value);
+    }
+};
 
 }

@@ -10,12 +10,13 @@ struct NotificationMessage : Message
 {
     std::string method;
     std::optional<nlohmann::json> params;
-};
 
-inline void from_json(const nlohmann::json& j, NotificationMessage& m)
-{
-    parse(j, "method", m.method);
-    parse(j, "params", m.params);
-}
+    LS3P_ARCHIVE(NotificationMessage)
+    {
+        archive
+            ("method", method)
+            ("params", params);
+    }
+};
 
 }

@@ -28,32 +28,35 @@ struct ResponseError
     Integer code;
     std::string message;
     std::optional<std::variant<Integer, bool, std::string, std::monostate, nlohmann::json>> data;
-};
 
-inline void from_json(const nlohmann::json& j, ResponseError& m)
-{
-    parse(j, "code", m.code);
-    parse(j, "message", m.message);
-    parse(j, "data", m.data);
-}
+    LS3P_ARCHIVE(ResponseError)
+    {
+        archive
+            ("code", code)
+            ("message", message)
+            ("data", data);
+    }
+};
 
 struct ResponseMessage : Message
 {
     std::variant<Integer, std::string, std::monostate> id;
     std::optional<std::variant<Integer, bool, std::string, std::monostate, nlohmann::json>> params;
     std::optional<ResponseError> error;
-};
 
-inline void from_json(const nlohmann::json& j, ResponseMessage& m)
-{
-    parse(j, "id", m.id);
-    parse(j, "params", m.params);
-    parse(j, "error", m.error);
-
-    if (m.params && m.error)
+    LS3P_ARCHIVE(ResponseMessage)
     {
-        throw util::ParsingException("Only params or error may be present at a time");
+        archive
+            ("id", id)
+            ("params", params)
+            ("error", error);
+        
+        if (params && error)
+        {
+            // FIXME: should be a ValidationError or something
+            throw util::ParsingException("Only params or error may be present at a time");
+        }
     }
-}
+};
 
 }

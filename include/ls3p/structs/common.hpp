@@ -62,6 +62,13 @@ struct FromArchiver
     const nlohmann::json& j;
 
     template<class T>
+    const FromArchiver& with_base(T& target) const
+    {
+        j.get_to(target);
+        return *this;
+    }
+
+    template<class T>
     const FromArchiver& operator()(const char* name, T& target) const
     {
         parse(j, name, target);
@@ -74,6 +81,13 @@ struct ToArchiver
     static constexpr bool is_parser = false;
 
     nlohmann::json& j;
+
+    template<class T>
+    const ToArchiver& with_base(T& target) const
+    {
+        j = target;
+        return *this;
+    }
 
     template<class T>
     const ToArchiver& operator()(const char* name, T& target) const
