@@ -7,6 +7,10 @@
 namespace ls3p
 {
 
+/// \brief Thin abstraction to handle JSON-RPC requests with HTTP headers.
+/// \details
+/// RPC servers should override \p parse_json_content to handle JSON payloads.
+/// This class does not abstract away requests, etc., it only allows obtaining payload from a \p TransportInterface
 class HttpJsonRpcServer
 {
     public:
