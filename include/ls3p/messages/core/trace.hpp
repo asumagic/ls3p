@@ -1,6 +1,5 @@
 #pragma once
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/TextEdit.hpp>
 
 namespace ls3p::messages::core
 {

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/core/Range.hpp>
-#include <ls3p/messages/core/TextDocument.hpp>
+#include <ls3p/messages/core/location.hpp>
+#include <ls3p/messages/core/textdocument.hpp>
 
 namespace ls3p::messages::core
 {
