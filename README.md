@@ -2,7 +2,7 @@
 
 This is extremely WIP and is currently unusable for real projects. Don't trust the tenses used in this document ;)
 
-A [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) server implementation for C++17, aiming to be reasonably lightweight and embeddable.  
+A [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) 3.16 server implementation for C++17, aiming to be reasonably lightweight and embeddable.  
 It hopes to provide a useful, clean and complete interface for the LSP, and to eliminate boilerplate in user code as much as possible.
 
 This may be adapted to serve as a LSP client, however, it is currently a non-goal and serialization of client messages may not be as thorough.
