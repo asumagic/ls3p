@@ -57,6 +57,8 @@ void parse(const nlohmann::json& j, const char* field, T& target)
 
 struct FromArchiver
 {
+    static constexpr bool is_parser = true;
+
     const nlohmann::json& j;
 
     template<class T>
@@ -69,6 +71,8 @@ struct FromArchiver
 
 struct ToArchiver
 {
+    static constexpr bool is_parser = false;
+
     nlohmann::json& j;
 
     template<class T>
@@ -104,8 +108,13 @@ using util::parse; // NOLINT(misc-unused-using-decls)
 /// \brief Helper macro to define an "archive" function to automatically expose from_json and to_json functions.
 /// \details
 /// Define this within a struct you want from_json and to_json to be automatically created from.
-/// A function scope must follow. "archive" is passed as a parameter, which is either an instance of
-/// \p FromArchiver or \p ToArchiver which both provide a call operator.
+///
+/// A function scope must follow. One parameter is exposed in the scope:
+/// - \p archive which is either an instance of \p FromArchiver or \p ToArchiver
+///
+/// Note that it is possible to detect whether we are in a parsing context - i.e. \p FromArchiver - by checking
+/// the static constexpr bool field `Archive::is_parser`.
+///
 /// Example usage:
 /// LS3P_ARCHIVE(MyClass) {
 ///     archive
