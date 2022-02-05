@@ -11,12 +11,12 @@ namespace nlohmann
 template<>
 struct adl_serializer<std::monostate>
 {
-    static void to_json(json& j, std::monostate& v)
+    static void to_json(json& j, const std::monostate& v)
     {
         j = {};
     }
 
-    static void from_json(const json& j, const std::monostate& v)
+    static void from_json(const json& j, std::monostate& v)
     {
         if (!j.is_null())
         {
