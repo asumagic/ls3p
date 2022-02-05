@@ -37,6 +37,11 @@ struct TextDocumentClientCapabilities
     // TODO: callHierarchy
     // TODO: semanticTokens
     // TODO: moniker
+
+    LS3P_ARCHIVE(TextDocumentClientCapabilities)
+    {
+
+    }
 };
 
 struct ClientCapabilities
@@ -70,9 +75,31 @@ struct ClientCapabilities
 
             std::optional<bool> did_delete;
             std::optional<bool> will_delete;
+
+            LS3P_ARCHIVE(FileOperations)
+            {
+                archive
+                    ("dynamicRegistration", dynamic_registration)
+                    ("didCreate", did_create)
+                    ("willCreate", will_create)
+                    ("didRename", did_rename)
+                    ("willRename", will_rename)
+                    ("didDelete", did_delete)
+                    ("willDelete", will_delete);
+            }
         };
 
         std::optional<FileOperations> file_operations;
+
+        LS3P_ARCHIVE(Workspace)
+        {
+            archive
+                ("applyEdit", apply_edit)
+                ("workspaceEdit", workspace_edit)
+                ("workspaceFolders", workspace_folders)
+                ("configuration", configuration)
+                ("fileOperations", file_operations);
+        }
     };
 
     std::optional<Workspace> workspace;
@@ -85,6 +112,12 @@ struct ClientCapabilities
 
         // TODO: showMessage
         // TODO: showDocument
+
+        LS3P_ARCHIVE(Window)
+        {
+            archive
+                ("workDoneProgress", work_done_progress);
+        }
     };
 
     std::optional<Window> window;
@@ -93,11 +126,28 @@ struct ClientCapabilities
     {
         std::optional<core::RegularExpressionsClientCapabilities> regular_expressions;
         std::optional<core::MarkdownClientCapabilities> markdown;
+
+        LS3P_ARCHIVE(General)
+        {
+            archive
+                ("regularExpressions", regular_expressions)
+                ("markdown", markdown);
+        }
     };
 
     std::optional<General> general;
 
     std::optional<nlohmann::json> experimental;
+
+    LS3P_ARCHIVE(ClientCapabilities)
+    {
+        archive
+            ("workspace", workspace)
+            ("textDocument", text_document)
+            ("window", window)
+            ("general", general)
+            ("experimental", experimental);
+    }
 };
 
 struct ServerCapabilities
@@ -134,29 +184,48 @@ struct ServerCapabilities
     {
         // TODO: workspaceFolders
         std::optional<ClientCapabilities::Workspace::FileOperations> file_operations;
+
+        LS3P_ARCHIVE(Workspace)
+        {
+            archive
+                ("fileOperations", file_operations);
+        }
     };
 
     std::optional<Workspace> workspace;
 
     std::optional<nlohmann::json> experimental;
+
+    LS3P_ARCHIVE(ServerCapabilities)
+    {
+        archive
+            ("workspace", workspace)
+            ("experimental", experimental);
+    }
 };
 
 struct InitializeParams
 {
-    public:
     std::optional<int> process_id;
 
     struct ClientInfo
     {
         std::string name;
         std::optional<std::string> version;
+
+        LS3P_ARCHIVE(ClientInfo)
+        {
+            archive
+                ("name", name)
+                ("version", version);
+        }
     };
 
     std::optional<ClientInfo> client_info;
 
     std::optional<std::string> locale;
 
-    [[deprecated("root_uri is recommended in the LSP")]]
+    //[[deprecated("root_uri is recommended in the LSP")]]
     std::optional<std::variant<std::string, std::monostate>> root_path;
 
     std::optional<nlohmann::json> initialization_options;
@@ -166,6 +235,18 @@ struct InitializeParams
     // TODO: trace
 
     std::vector<workspace::WorkspaceFolder> workspace_folders;
+
+    LS3P_ARCHIVE(InitializeParams)
+    {
+        archive
+            ("processId", process_id)
+            ("clientInfo", client_info)
+            ("local", locale)
+            ("rootPath", root_path)
+            ("initializationOptions", initialization_options)
+            ("capabilities", capabilities)
+            ("workspaceFolders", workspace_folders);
+    }
 };
 
 struct InitializeResult
@@ -176,9 +257,23 @@ struct InitializeResult
     {
         std::string name;
         std::optional<std::string> version;
+
+        LS3P_ARCHIVE(ServerInfo)
+        {
+            archive
+                ("name", name)
+                ("version", version);
+        }
     };
 
     ServerInfo server_info;
+
+    LS3P_ARCHIVE(InitializeResult)
+    {
+        archive
+            ("capabilities", capabilities)
+            ("serverInfo", server_info);
+    }
 };
 
 enum class InitializeErrorCode : Integer
@@ -189,8 +284,17 @@ enum class InitializeErrorCode : Integer
 struct InitializeError
 {
     bool retry;
+
+    LS3P_ARCHIVE(InitializeError)
+    {
+        archive
+            ("retry", retry);
+    }
 };
 
-struct InitializedParams {};
+struct InitializedParams
+{
+    LS3P_ARCHIVE(InitializedParams) {}
+};
 
 }
