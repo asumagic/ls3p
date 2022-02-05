@@ -28,4 +28,7 @@ struct DidChangeConfigurationParams
     }
 };
 
+// TODO: ConfigurationParams
+// TODO: ConfigurationItem
+
 }

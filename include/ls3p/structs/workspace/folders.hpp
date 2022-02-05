@@ -32,4 +32,7 @@ struct WorkspaceFolder
     }
 };
 
+// TODO: DidChangeWorkspaceFoldersParams
+// TODO: WorkspaceFoldersChangeEvent
+
 }

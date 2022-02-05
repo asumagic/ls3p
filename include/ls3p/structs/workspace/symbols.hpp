@@ -93,4 +93,9 @@ struct WorkspaceSymbolClientCapabilities
     }
 };
 
+// TODO: WorkspaceSymbolOptions
+// TODO: WorkspaceSymbolRegistrationOptions
+// TODO: WorkspaceSymbolParams
+// TODO: WorkspaceSymbol
+
 }

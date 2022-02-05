@@ -67,4 +67,6 @@ struct FileEvent
     }
 };
 
+// TODO: DidChangeWatchedFilesParams
+
 }
