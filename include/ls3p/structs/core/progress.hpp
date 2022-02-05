@@ -16,7 +16,7 @@ struct WorkDoneProgressBegin
     LS3P_ARCHIVE(WorkDoneProgressBegin)
     {
         archive
-            ("kind", "begin")
+            .static_field("kind", std::string_view("begin"))
             ("title", title)
             ("cancellable", cancellable)
             ("message", message)
@@ -33,7 +33,7 @@ struct WorkDoneProgressReport
     LS3P_ARCHIVE(WorkDoneProgressReport)
     {
         archive
-            ("kind", "report")
+            .static_field("kind", std::string_view("report"))
             ("cancellable", cancellable)
             ("message", message)
             ("percentage", percentage);
@@ -47,7 +47,7 @@ struct WorkDoneProgressEnd
     LS3P_ARCHIVE(WorkDoneProgressEnd)
     {
         archive
-            ("kind", "end")
+            .static_field("kind", std::string_view("end"))
             ("message", message);
     }
 };
