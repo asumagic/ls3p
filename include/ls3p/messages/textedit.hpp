@@ -2,7 +2,7 @@
 
 #include <ls3p/messages/common.hpp>
 #include <ls3p/messages/location.hpp>
-#include <ls3p/messages/textid.hpp>
+#include <ls3p/messages/textdoc.hpp>
 
 namespace ls3p::messages
 {
