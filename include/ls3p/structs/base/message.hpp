@@ -14,16 +14,11 @@ struct Message
             throw util::ValidationError("Expected JSON-RPC 2.0 message");
         }
     }
+
+    LS3P_ARCHIVE(Message)
+    {
+        archive.static_field("version", std::string_view("2.0"));
+    }
 };
-
-inline void from_json(const nlohmann::json& j, Message& m)
-{
-    Message::validate_version(j.at("version"));
-}
-
-inline void to_json(nlohmann::json& j, const Message& m)
-{
-    j["version"] = "2.0";
-}
 
 }
