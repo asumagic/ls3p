@@ -5,6 +5,7 @@
 #include <ls3p/structs/core/regex.hpp>
 #include <ls3p/structs/core/trace.hpp>
 #include <ls3p/structs/core/workspaceedit.hpp>
+#include <ls3p/structs/workspace/configuration.hpp>
 #include <ls3p/structs/workspace/folders.hpp>
 
 namespace ls3p::structs::general
@@ -53,7 +54,7 @@ struct ClientCapabilities
 
         std::optional<core::WorkspaceEditClientCapabilities> workspace_edit;
 
-        // TODO: didChangeConfiguration
+        std::optional<workspace::DidChangeConfigurationClientCapabilities> did_change_configuration;
         // TODO: didChangeWatchedFiles
         // TODO: symbol
         // TODO: executeCommand
@@ -97,6 +98,7 @@ struct ClientCapabilities
             archive
                 ("applyEdit", apply_edit)
                 ("workspaceEdit", workspace_edit)
+                ("didChangeConfiguration", did_change_configuration)
                 ("workspaceFolders", workspace_folders)
                 ("configuration", configuration)
                 ("fileOperations", file_operations);
