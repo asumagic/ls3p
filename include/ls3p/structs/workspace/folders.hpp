@@ -9,6 +9,13 @@ struct WorkspaceFolder
 {
     DocumentUri uri;
     std::string name;
+
+    LS3P_ARCHIVE(WorkspaceFolder)
+    {
+        archive
+            ("uri", uri)
+            ("name", name);
+    }
 };
 
 }
