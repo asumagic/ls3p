@@ -8,6 +8,7 @@
 #include <ls3p/structs/workspace/configuration.hpp>
 #include <ls3p/structs/workspace/folders.hpp>
 #include <ls3p/structs/workspace/fswatch.hpp>
+#include <ls3p/structs/workspace/symbols.hpp>
 
 namespace ls3p::structs::general
 {
@@ -57,7 +58,7 @@ struct ClientCapabilities
 
         std::optional<workspace::DidChangeConfigurationClientCapabilities> did_change_configuration;
         std::optional<workspace::DidChangeWatchedFilesClientCapabilities> did_change_watched_files;
-        // TODO: symbol
+        std::optional<workspace::WorkspaceSymbolClientCapabilities> symbol;
         // TODO: executeCommand
         
         std::optional<bool> workspace_folders;
@@ -101,6 +102,7 @@ struct ClientCapabilities
                 ("workspaceEdit", workspace_edit)
                 ("didChangeConfiguration", did_change_configuration)
                 ("didChangeWatchedFiles", did_change_watched_files)
+                ("symbol", symbol)
                 ("workspaceFolders", workspace_folders)
                 ("configuration", configuration)
                 ("fileOperations", file_operations);
