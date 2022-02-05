@@ -160,11 +160,25 @@ using util::parse; // NOLINT(misc-unused-using-decls)
 #define LS3P_ARCHIVE(class_name) \
     friend inline void from_json(const nlohmann::json& j, class_name& s) \
     { \
-        s.archive(ls3p::util::FromArchiver{j}); \
+        constexpr auto context = "Parsing " #class_name ":\n"; \
+        try { \
+            s.archive(ls3p::util::FromArchiver{j}); \
+        } catch (const nlohmann::json::exception& e) { \
+            throw ls3p::util::ValidationError(e.what()).with_context(context); \
+        } catch (const ls3p::util::ValidationError& e) { \
+            throw e.with_context(context); \
+        } \
     } \
     friend inline void to_json(nlohmann::json& j, const class_name& s) \
     { \
-        const_cast<class_name&>(s).archive(ls3p::util::ToArchiver{j}); \
+        constexpr auto context = "Serializing " #class_name ":\n"; \
+        try { \
+            const_cast<class_name&>(s).archive(ls3p::util::ToArchiver{j}); \
+        } catch (const nlohmann::json::exception& e) { \
+            throw ls3p::util::ValidationError(e.what()).with_context(context); \
+        } catch (const ls3p::util::ValidationError& e) { \
+            throw e.with_context(context); \
+        } \
     } \
     template<class Archive> \
     inline void archive(const Archive& archive)
