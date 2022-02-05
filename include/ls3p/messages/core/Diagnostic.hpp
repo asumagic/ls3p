@@ -39,7 +39,7 @@ struct Diagnostic
     std::optional<CodeDescription> code_description;
     std::optional<std::string> source;
     std::string message;
-    std::optional<std::vector<std::string>> tags;
+    std::optional<std::vector<Tag>> tags;
     std::optional<RelatedInformation> related_information;
     std::optional<nlohmann::json> data;
 };
