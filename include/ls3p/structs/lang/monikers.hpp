@@ -16,4 +16,11 @@ struct MonikerClientCapabilities
     }
 };
 
+// TODO: MonikerOptions
+// TODO: MonikerRegistrationOptions
+// TODO: MonikerParams
+// TODO: UniquenessLevel
+// TODO: MonikerKind
+// TODO: Moniker
+
 }
