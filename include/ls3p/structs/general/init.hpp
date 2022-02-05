@@ -3,6 +3,7 @@
 #include <ls3p/structs/common.hpp>
 #include <ls3p/structs/core/markup.hpp>
 #include <ls3p/structs/core/regex.hpp>
+#include <ls3p/structs/core/trace.hpp>
 #include <ls3p/structs/core/workspaceedit.hpp>
 #include <ls3p/structs/workspace/folders.hpp>
 
@@ -232,7 +233,7 @@ struct InitializeParams
 
     ClientCapabilities capabilities;
 
-    // TODO: trace
+    std::optional<core::TraceValue> trace;
 
     std::vector<workspace::WorkspaceFolder> workspace_folders;
 
@@ -245,6 +246,7 @@ struct InitializeParams
             ("rootPath", root_path)
             ("initializationOptions", initialization_options)
             ("capabilities", capabilities)
+            ("trace", trace)
             ("workspaceFolders", workspace_folders);
     }
 };
