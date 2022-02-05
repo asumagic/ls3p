@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ls3p/messages/common.hpp>
-#include <ls3p/messages/base/Message.hpp>
+#include <ls3p/messages/base/message.hpp>
 
 namespace ls3p::messages::base
 {
