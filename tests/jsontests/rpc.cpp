@@ -64,7 +64,7 @@ TEST_CASE("JSON-RPC request parsing", "[jsonrpc]")
 {
     constexpr std::string_view content = R"(
         {
-            "version": "2.0",
+            "jsonrpc": "2.0",
             "id": 0,
             "method": "$/test",
             "params": {}

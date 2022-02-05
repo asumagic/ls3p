@@ -41,7 +41,7 @@ TEST_CASE("Test RequestMessage parsing", "[request]")
 {
     const auto message = json::parse(R"(
         {
-            "version": "2.0",
+            "jsonrpc": "2.0",
             "id": 123,
             "method": "foobar"
         }

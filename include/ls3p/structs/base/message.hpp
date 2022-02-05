@@ -17,7 +17,7 @@ struct Message
 
     LS3P_ARCHIVE(Message)
     {
-        archive.static_field("version", std::string_view("2.0"));
+        archive.static_field("jsonrpc", std::string_view("2.0"));
     }
 };
 
