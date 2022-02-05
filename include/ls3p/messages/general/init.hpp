@@ -3,7 +3,7 @@
 #include <ls3p/messages/common.hpp>
 #include <ls3p/messages/caps/ClientCapabilities.hpp>
 
-namespace ls3p::messages
+namespace ls3p::messages::general
 {
 
 struct InitializeParams
