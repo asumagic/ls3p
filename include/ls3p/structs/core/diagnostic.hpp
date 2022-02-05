@@ -10,12 +10,25 @@ struct Diagnostic
     struct CodeDescription
     {
         URI href;
+
+        LS3P_ARCHIVE(CodeDescription)
+        {
+            archive
+                ("href", href);
+        }
     };
 
     struct RelatedInformation
     {
         Location location;
         std::string message;
+
+        LS3P_ARCHIVE(RelatedInformation)
+        {
+            archive
+                ("location", location)
+                ("message", message);
+        }
     };
 
     enum class Severity : Integer
@@ -41,6 +54,20 @@ struct Diagnostic
     std::optional<std::vector<Tag>> tags;
     std::optional<RelatedInformation> related_information;
     std::optional<nlohmann::json> data;
+
+    LS3P_ARCHIVE(Diagnostic)
+    {
+        archive
+            ("range", range)
+            ("severity", severity)
+            ("code", code)
+            ("codeDescription", code_description)
+            ("source", source)
+            ("message", message)
+            ("tags", tags)
+            ("relatedInformation", related_information)
+            ("data", data);
+    }
 };
 
 }
