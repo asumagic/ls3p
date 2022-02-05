@@ -5,6 +5,7 @@ add_executable(jsontests
     jsontests/stdtypes.cpp
     jsontests/basemessages.cpp
     jsontests/rpc.cpp
+    jsontests/complex.cpp
     jsontests/includeall.cpp
 )
 target_link_libraries(jsontests ls3p Catch2::Catch2)
