@@ -133,27 +133,27 @@ struct ChangeAnnotationSupport
     }
 };
 
+struct WorkspaceEditClientCapabilities
+{
+    std::optional<bool> document_changes;
+    std::optional<std::vector<ResourceOperationKind>> resource_operations;
+    std::optional<FailureHandlingKind> failure_handling;
+    std::optional<bool> normalizes_line_endings;
+    std::optional<ChangeAnnotationSupport> change_annotation_support;
+
+    LS3P_ARCHIVE(WorkspaceEditClientCapabilities)
+    {
+        archive
+            ("documentChanges", document_changes)
+            ("resourceOperations", resource_operations)
+            ("failureHandling", failure_handling)
+            ("normalizesLineEndings", normalizes_line_endings)
+            ("changeAnnotationSupport", change_annotation_support);
+    }
+};
+
 struct WorkspaceEdit
 {
-    struct ClientCapabilities
-    {
-        std::optional<bool> document_changes;
-        std::optional<std::vector<ResourceOperationKind>> resource_operations;
-        std::optional<FailureHandlingKind> failure_handling;
-        std::optional<bool> normalizes_line_endings;
-        std::optional<ChangeAnnotationSupport> change_annotation_support;
-
-        LS3P_ARCHIVE(ClientCapabilities)
-        {
-            archive
-                ("documentChanges", document_changes)
-                ("resourceOperations", resource_operations)
-                ("failureHandling", failure_handling)
-                ("normalizesLineEndings", normalizes_line_endings)
-                ("changeAnnotationSupport", change_annotation_support);
-        }
-    };
-
     std::optional<std::map<DocumentUri, std::vector<TextEdit>>> changes;
 
     std::vector<std::variant<TextDocumentEdit, CreateFile, RenameFile, DeleteFile>> document_changes;

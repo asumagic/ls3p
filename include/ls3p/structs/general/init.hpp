@@ -50,7 +50,7 @@ struct ClientCapabilities
     {
         std::optional<bool> apply_edit;
 
-        std::optional<core::WorkspaceEdit::ClientCapabilities> workspace_edit;
+        std::optional<core::WorkspaceEditClientCapabilities> workspace_edit;
 
         // TODO: didChangeConfiguration
         // TODO: didChangeWatchedFiles
