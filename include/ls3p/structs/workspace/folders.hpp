@@ -5,6 +5,20 @@
 namespace ls3p::structs::workspace
 {
 
+struct WorkspaceFoldersServerCapabilities
+{
+    std::optional<bool> supported;
+
+    std::optional<std::variant<std::string, bool>> change_notifications;
+
+    LS3P_ARCHIVE(WorkspaceFoldersServerCapabilities)
+    {
+        archive
+            ("supported", supported)
+            ("changeNotifications", change_notifications);
+    }
+};
+
 struct WorkspaceFolder
 {
     DocumentUri uri;

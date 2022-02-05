@@ -189,12 +189,13 @@ struct ServerCapabilities
 
     struct Workspace
     {
-        // TODO: workspaceFolders
+        std::optional<workspace::WorkspaceFoldersServerCapabilities> workspace_folders;
         std::optional<ClientCapabilities::Workspace::FileOperations> file_operations;
 
         LS3P_ARCHIVE(Workspace)
         {
             archive
+                ("workspaceFolders", workspace_folders)
                 ("fileOperations", file_operations);
         }
     };
