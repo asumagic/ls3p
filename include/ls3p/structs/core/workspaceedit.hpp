@@ -139,7 +139,7 @@ struct WorkspaceEdit
     {
         std::optional<bool> document_changes;
         std::optional<std::vector<ResourceOperationKind>> resource_operations;
-        std::optional<std::vector<FailureHandlingKind>> failure_handling;
+        std::optional<FailureHandlingKind> failure_handling;
         std::optional<bool> normalizes_line_endings;
         std::optional<ChangeAnnotationSupport> change_annotation_support;
 
