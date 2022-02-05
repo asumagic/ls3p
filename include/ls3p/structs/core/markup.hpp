@@ -23,12 +23,26 @@ struct MarkupContent
     MarkupKind kind;
 
     std::string value;
+
+    LS3P_ARCHIVE(MarkupContent)
+    {
+        archive
+            ("kind", kind)
+            ("value", value);
+    }
 };
 
 struct MarkdownClientCapabilities
 {
     std::string parser;
     std::optional<std::string> version;
+
+    LS3P_ARCHIVE(MarkdownClientCapabilities)
+    {
+        archive
+            ("parser", parser)
+            ("version", version);
+    }
 };
 
 }
